@@ -1,14 +1,18 @@
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
 var twoSum = function(nums, target) {
-    let arr = []
-    let resultTarget
+    let resultArrarr = []
+    let numDesconhecido 
     for(let i in nums){
-        resultTarget = target - nums[i];
-        if(nums.includes(resultTarget) && nums.indexOf(resultTarget) != i) arr.push(parseInt(i))
-        if(arr.length == 1){
-            arr.unshift(0)
+        numDesconhecido = target - nums[i]
+        if(nums.includes(numDesconhecido) && nums.indexOf(numDesconhecido) != i && resultArrarr <= 2){
+            resultArrarr.push(parseInt(i), nums.indexOf(numDesconhecido))
         }
-    } 
-    return arr;
+    }
+    return resultArrarr;
 };
 
-console.log(twoSum([3,3], 6))
+twoSum([3,2,4], 6)

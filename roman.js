@@ -1,42 +1,25 @@
-/**
- * @param {string} s
- * @return {number}
- */
-var romanToInt = function (s) {
-  const numRoman = s;
-  let numInt = 0;
+function roman(s){
+    const romanValues = {
+        I:1,
+        V:5,
+        X:10,
+        L:50,
+        C:100,
+        D:500,
+        M:1000
+    }
+    let numInt = 0; 
+    for(let i = 0; i < s.length ; i++){
+        let currValue = romanValues[s[i]];
+        let nextValue = romanValues[s[i+1]];
+        if(nextValue > currValue){
+            numInt += nextValue - currValue;
+            i++
+        }else{
+            numInt += currValue;
+        }
+    }
+    return numInt;
+}
 
-  for(let i in numRoman){
-    if(numRoman.charAt(i) === "I"){
-        numInt++
-    }
-    if(numRoman.charAt(i) === "V"){
-        numInt += 5
-        numRoman.charAt(i - 1) === "I" ? numInt -= 2 : true;
-    }
-    if(numRoman.charAt(i) === "X"){
-        numInt += 10
-        numRoman.charAt(i - 1) === "I" ? numInt -= 2 : true;
-    }
-    if(numRoman.charAt(i) === "L"){
-        numInt += 50
-        numRoman.charAt(i - 1) === "X" ? numInt -= 20 : true;
-    }
-    if(numRoman.charAt(i) === "C"){
-        numInt += 100
-        numRoman.charAt(i - 1) === "X" ? numInt -= 20 : true;
-    }
-    if(numRoman.charAt(i) === "D"){
-        numInt += 500
-        numRoman.charAt(i - 1) === "C" ? numInt -= 200 : true;
-    }
-    if(numRoman.charAt(i) === "M"){
-        numInt += 1000
-        numRoman.charAt(i - 1) === "C" ? numInt -= 200 : true;
-    }
-  }
-
-  return numInt;
-};
-
-console.log(romanToInt("MMMXLV"));
+roman("CXL")
