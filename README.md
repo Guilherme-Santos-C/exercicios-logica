@@ -1,2 +1,2 @@
-# LeetcodeExercises
-pequenos algoritimos para treino, tirados do leetcode
+# Exercísios para Logica de progamção
+pequenos algoritimos para melhorar a logica
